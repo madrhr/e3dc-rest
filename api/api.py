@@ -233,7 +233,7 @@ class wallbox_sunmode(Resource):
         content: JSON = request.json
 
         try:
-            if e3dc.set_wallbox_sunmode(content.mode, keepAlive=True):
+            if e3dc.set_wallbox_sunmode(content["mode"], keepAlive=True):
                 return {"message": "success"}, 200
             else:
                 return {"message": "error updating wallbox sunmode"}, 501
