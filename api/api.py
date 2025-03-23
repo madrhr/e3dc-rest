@@ -222,6 +222,24 @@ class db_data(Resource):
             startDate=startDate, timespan=args["timespan"], keepAlive=True
         )
 
+class wallbox_sunmode(Resource):
+    def get(self):
+        return {"message": "success"}, 200
+    
+    def post(self):
+        if not request.is_json:
+            return {"message": "not an application/json content type"}, 400
+        
+        content: JSON = request.json
+
+        try:
+            if e3dc.set_wallbox_sunmode(content.mode, keepAlive=True):
+                return {"message": "success"}, 200
+            else:
+                return {"message": "error updating wallbox sunmode"}, 501
+        except Exception as e:
+            return {"message": e}, 400
+
 
 # This error handler is necessary for usage with Flask-RESTful
 @parser.error_handler
