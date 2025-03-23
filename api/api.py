@@ -265,7 +265,7 @@ api.add_resource(powermeters_data, "/api/powermeters_data")
 api.add_resource(power_settings, "/api/power_settings")
 api.add_resource(idle_periods, "/api/idle_periods")
 api.add_resource(db_data, "/api/db_data")
-api.add_resource(wallbox_sunmode, "api/wallbox_sunmode")
+api.add_resource(wallbox_sunmode, "/api/wallbox_sunmode")
 
 if __name__ == "__main__":
     app.run(debug=False)
