@@ -224,7 +224,7 @@ class db_data(Resource):
 
 class wallbox_sunmode(Resource):
     def get(self):
-        return {"message": "success"}, 200
+        return e3dc.get_wallbox_data["sunModeOn"]
     
     def post(self):
         if not request.is_json:
