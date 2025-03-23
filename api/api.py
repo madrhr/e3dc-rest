@@ -222,9 +222,15 @@ class db_data(Resource):
             startDate=startDate, timespan=args["timespan"], keepAlive=True
         )
 
+
+class wallbox(Resource):
+    def get(self):
+        return e3dc.get_wallbox_data(keepAlive=True)
+
+
 class wallbox_sunmode(Resource):
     def get(self):
-        return e3dc.get_wallbox_data["sunModeOn"]
+        return e3dc.get_wallbox_data(keepAlive=True)["sunModeOn"]
     
     def post(self):
         if not request.is_json:
@@ -266,6 +272,7 @@ api.add_resource(power_settings, "/api/power_settings")
 api.add_resource(idle_periods, "/api/idle_periods")
 api.add_resource(db_data, "/api/db_data")
 api.add_resource(wallbox_sunmode, "/api/wallbox_sunmode")
+api.add_resource(wallbox, "/api/wallbox")
 
 if __name__ == "__main__":
     app.run(debug=False)
